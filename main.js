@@ -68,6 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     for(var x = 0; x < columns; x++)
         drops[x] = c.height; 
+    elements = document.querySelectorAll('.number');
     setInterval(draw, 35);
     writeText()
 }, false);
@@ -82,3 +83,64 @@ window.addEventListener('resize', function() {
     for(var x = 0; x < columns; x++)
         drops[x] = c.height; 
 }, true);
+
+function countUp(entries){
+    entries.forEach(entry => {
+        var startNum = Number(entry.target.dataset.number)
+        entry.target.innerHTML = 0
+        var number = 0
+        var time = 0
+        for (let index = 0; index < startNum; index++) {
+            number += 1
+            time += Math.random()*(1500/startNum)
+            setTimeout(function(number){
+            
+                var formattedNumberUS = number.toLocaleString('en-US');
+                entry.target.innerHTML = formattedNumberUS;
+            }, time, number);
+        }
+    })
+    
+}   
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    elements = document.querySelectorAll('.number');      
+      var observer = new IntersectionObserver(countUp);
+      const options = { root: null, rootMargin: '0px', threshold: 1 }; 
+    
+      elements.forEach(el => {
+        observer.observe(el, options);
+      });
+
+    const banner = document.querySelector('.banner');
+    banner.classList.remove('banner-transition');
+
+    var observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+        banner.classList.add('banner-transition');
+        return;
+        }
+
+        banner.classList.remove('banner-transition');
+    });
+    });
+
+    observer.observe(banner);
+}, false);
+
+//   // Get multiple elements instead of a single one using "querySelectorAll"
+//   const squares = document.getElementsByClassName('number');
+//   console.log(squares)
+//   // Loop over the elements and add each one to the observer
+//   Array.from(squares).forEach((element) => observer.observe(element));
+
+// TODO
+// 1 - Finish content - ALMOST
+// 2 - Add animation on scroll - Done 
+// 3 - Js function to count up to number also on scroll - DONE
+// 4 - Add cv link
+// 5 - Buy domain - DONE
+// 6 - Add email link
+// 7 - add footer
