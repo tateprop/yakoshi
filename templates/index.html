@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, width=device-width">
+    <title>Document</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="{{url_for('static', filename='main.js')}}"></script>
+    <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://unpkg.com/htmx.org@1.6.1"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="canvas-container"> 
+        
+        <canvas class="c" data-number="{{ matrix_level }}"></canvas>
+        <nav class="nav-bar">
+            <div class="logo">
+                <img src="{{url_for('static', filename='./images/yak2.svg')}}" alt="">
+            </div>
+            <div class="menu">
+                <a href="" class="menu-link">
+                   Download CV
+                </a>
+            </div>
+        </nav>
+        <div id="text-over-canvas">
+            <div id="center-div">
+                <h1 class="main-text hide">Hello {{name}} </h1>
+                <h1 class="glitch hide">I'm Yakov</h1>
+            </div>
+        </div> 
+    </div>
+    
+    <div class="fill"></div>
+    <div class="first-page">
+       <div class="center-div1">
+            <h1 class="header">I'm running a cold emailing campaign</h1>
+            <div class="data-container">
+                <div class="stats-container">
+                    <div class="box-container">
+                        <div class="box-border"><div class="box">
+                            <img src="{{url_for('static', filename='./images/code-box-svgrepo-com.svg')}}" alt="">
+                            <h2 class="number" data-number={{ emails }} hx-get="/emails" hx-trigger="every 5s"></h2>
+                            <h3>Emails sent</h3>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="box-container">
+                        <div class="box-border"><div class="box"><img src="{{url_for('static', filename='./images/website-webpage-url-domain-svgrepo-com.svg')}}" alt="">
+                          <h2 class="number" data-number={{ visits }} hx-get="/visits" hx-trigger="every 5s"></h2>
+                          <h3>Page visits</h3></div></div>
+                    </div>
+                    <div class="box-container">
+                        <div class="box-border"><div class="box"><img src="{{url_for('static', filename='./images/easter-egg-easter-svgrepo-com.svg')}}" alt="">
+                          <h2 class="number" data-number={{ eggs }} hx-get="/eggs" hx-trigger="every 5s"></h2>
+                          <h3>Easter eggs found</h3></div></div>
+                    </div>
+                </div>
+                <div class="codingImage-container">
+                    <img src="{{url_for('static', filename='./images/phone.svg')}}" alt="">
+                </div>
+            </div>
+       </div> 
+    </div>
+    <div class="ag-timeline-block">
+        <div class="ag-timeline_title-box">
+          <div class="ag-timeline_tagline">...how?</div>
+          <div class="ag-timeline_title">A short overview of the steps taken to complete this project</div>
+        </div>
+        <section class="ag-section">
+          <div class="ag-format-container">
+            <div class="js-timeline ag-timeline">
+              <div class="js-timeline_line ag-timeline_line">
+                <div class="js-timeline_line-progress ag-timeline_line-progress"></div>
+              </div>
+              <div class="ag-timeline_list">
+                <div class="js-timeline_item ag-timeline_item">
+                  <div class="ag-timeline-card_box">
+                    <div class="js-timeline-card_point-box ag-timeline-card_point-box">
+                      <div class="ag-timeline-card_point"></div>
+                    </div>
+                    <div class="ag-timeline-card_meta-box">
+                      <div class="ag-timeline-card_meta">Day 1</div>
+                    </div>
+                  </div>
+                  <div class="ag-timeline-card_item">
+                    <div class="ag-timeline-card_inner">
+                      <div class="ag-timeline-card_img-box">
+                        <img src="{{url_for('static', filename='images/Selenium.svg')}}" class="ag-timeline-card_img" />
+                      </div>
+                      <div class="ag-timeline-card_info">
+                        <div class="ag-timeline-card_title">Day 1</div>
+                        <div class="ag-timeline-card_desc">
+                          I created a selenium bot that scraped Linkdin for small to medium sized tech companies. In total I got over 10,000 companies’ details.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="ag-timeline-card_arrow"></div>
+                  </div>
+                </div>
+      
+                <div class="js-timeline_item ag-timeline_item">
+                  <div class="ag-timeline-card_box">
+                    <div class="ag-timeline-card_meta-box">
+                      <div class="ag-timeline-card_meta">Day 2</div>
+                    </div>
+                    <div class="js-timeline-card_point-box ag-timeline-card_point-box">
+                      <div class="ag-timeline-card_point"></div>
+                    </div>
+                  </div>
+                  <div class="ag-timeline-card_item">
+                    <div class="ag-timeline-card_inner">
+                      <div class="ag-timeline-card_img-box">
+                        <img src="{{url_for('static', filename='images/Scraper.svg')}}" class="ag-timeline-card_img" />
+                      </div>
+                      <div class="ag-timeline-card_info">
+                        <div class="ag-timeline-card_title">Day 2</div>
+                        <div class="ag-timeline-card_desc">
+                          Developed a bot that could scrape emails address from a website once it checked if the domain was dead or parked. This left me with only ~2000 companies.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="ag-timeline-card_arrow"></div>
+                  </div>
+                </div>
+      
+                <div class="js-timeline_item ag-timeline_item">
+                  <div class="ag-timeline-card_box">
+                    <div class="js-timeline-card_point-box ag-timeline-card_point-box">
+                      <div class="ag-timeline-card_point"></div>
+                    </div>
+                    <div class="ag-timeline-card_meta-box">
+                      <div class="ag-timeline-card_meta">Day 3-6</div>
+                    </div>
+                  </div>
+                  <div class="ag-timeline-card_item">
+                    <div class="ag-timeline-card_inner">
+                      <div class="ag-timeline-card_img-box">
+                        <img src="{{url_for('static', filename='images/Design.svg')}}" class="ag-timeline-card_img" />
+                      </div>
+                      <div class="ag-timeline-card_info">
+                        <div class="ag-timeline-card_title">Day 3-6</div>
+                        <div class="ag-timeline-card_desc">
+                          Designed and redesigned the frontend of this site. I attempted to use Bootstrap and then Tailwind but in the end I found raw CSS easiest to work with
+                        </div>
+                      </div>
+                    </div>
+                    <div class="ag-timeline-card_arrow"></div>
+                  </div>
+                </div>
+      
+                <div class="js-timeline_item ag-timeline_item">
+                  <div class="ag-timeline-card_box">
+                    <div class="ag-timeline-card_meta-box">
+                      <div class="ag-timeline-card_meta">Day 7</div>
+                    </div>
+                    <div class="js-timeline-card_point-box ag-timeline-card_point-box">
+                      <div class="ag-timeline-card_point"></div>
+                    </div>
+                  </div>
+                  <div class="ag-timeline-card_item">
+                    <div class="ag-timeline-card_inner">
+                      <div class="ag-timeline-card_img-box">
+                        <img src="{{url_for('static', filename='images/Flask.svg')}}" class="ag-timeline-card_img" />
+                      </div>
+                      <div class="ag-timeline-card_info">
+                        <div class="ag-timeline-card_title">Day 7</div>
+                        <div class="ag-timeline-card_desc">
+                          Created the backend in Flask and used HTMX to link it to the frontend. Added some easter eggs to see if anyone cared enough to explore thoroughly.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="ag-timeline-card_arrow"></div>
+                  </div>
+                </div>
+      
+                <div class="js-timeline_item ag-timeline_item">
+                  <div class="ag-timeline-card_box">
+                    <div class="js-timeline-card_point-box ag-timeline-card_point-box">
+                      <div class="ag-timeline-card_point"></div>
+                    </div>
+                    <div class="ag-timeline-card_meta-box">
+                      <div class="ag-timeline-card_meta">Day 8</div>
+                    </div>
+                  </div>
+                  <div class="ag-timeline-card_item">
+                    <div class="ag-timeline-card_inner">
+                      <div class="ag-timeline-card_img-box">
+                        <img src="{{url_for('static', filename='images/Frustration.svg')}}" class="ag-timeline-card_img" />
+                      </div>
+                      <div class="ag-timeline-card_info">
+                        <div class="ag-timeline-card_title">Day 8</div>
+                        <div class="ag-timeline-card_desc">
+                          This was very painful I spent the entire day trying to make a program to send out the emails. I tried SMTP but I got rated limited. I tried Selenium but Microsoft could detect and block me. I tried cycling proxies, using different drivers etc. etc. I wrote hundred of lines of code that didn’t work. 
+                        </div>
+                      </div>
+                    </div>
+                    <div class="ag-timeline-card_arrow"></div>
+                  </div>
+                </div>
+      
+                <div class="js-timeline_item ag-timeline_item">
+                  <div class="ag-timeline-card_box">
+                    <div class="ag-timeline-card_meta-box">
+                      <div class="ag-timeline-card_meta">Day 9</div>
+                    </div>
+                    <div class="js-timeline-card_point-box ag-timeline-card_point-box">
+                      <div class="ag-timeline-card_point"></div>
+                    </div>
+                  </div>
+                  <div class="ag-timeline-card_item">
+                    <div class="ag-timeline-card_inner">
+                      <div class="ag-timeline-card_img-box">
+                        <img src="{{url_for('static', filename='images/Win32com.svg')}}" class="ag-timeline-card_img" />
+                      </div>
+                      <div class="ag-timeline-card_info">
+                        <div class="ag-timeline-card_title">Day 9</div>
+                        <div class="ag-timeline-card_desc">
+                          Used win32com I can now send emails in 6 lines of code.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="ag-timeline-card_arrow"></div>
+                  </div>
+                </div>
+      
+                <div class="js-timeline_item ag-timeline_item">
+                  <div class="ag-timeline-card_box">
+                    <div class="js-timeline-card_point-box ag-timeline-card_point-box">
+                      <div class="ag-timeline-card_point"></div>
+                    </div>
+                    <div class="ag-timeline-card_meta-box">
+                      <div class="ag-timeline-card_meta">Day 10</div>
+                    </div>
+                  </div>
+                  <div class="ag-timeline-card_item">
+                    <div class="ag-timeline-card_inner">
+                      <div class="ag-timeline-card_img-box">
+                        <img src="{{url_for('static', filename='images/Amazon.svg')}}" class="ag-timeline-card_img" />
+                      </div>
+                      <div class="ag-timeline-card_info">
+                        <div class="ag-timeline-card_title">Day 10</div>
+                        <div class="ag-timeline-card_desc">
+                          Set up aws to host my site. And we’re done :)
+                        </div>
+                      </div>
+                    </div>
+                    <div class="ag-timeline-card_arrow"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="first-page shorter">
+        <div class="center-div1 shorter">
+          <h1 class="header">...why?</h1>
+          <div class="ag-timeline_title spacing"> I want to connect with like minded individuals in the tech industry. Whether it’s to help on a project or just for a chat... <br> <br><a class="strong" href="mailto:yakov@yakoshi.net">I want to hear from you</a></div>
+
+        </div>
+      </div>
+    <!-- <div class="first-page">
+        <div class="center-div1">
+            <h1 class="header">Previous projects</h1>
+            <div class="box-container">
+                <div class="box-border"><div class="box" id="first">
+                    <img  class="bigger" src="./images/asserson_logo.webp" alt="">
+                    <h3>Created bespoke software Created bespoke software Created bespoke software Created bespoke software</h3>
+                </div></div>
+                <div class="box-border"><div class="box" id="first">
+                    <img class="smaller" src="./images/1682460341776-removebg-preview.png" alt="">
+                    <h3>Created bespoke software Created bespoke software Created bespoke software Created bespoke software</h3>
+                </div></div>
+                <div class="box-border"><div class="box" id="first">
+                    <img class="bigger" src="./images/heywood.svg" alt="">
+                    <h3>Created bespoke software Created bespoke software Created bespoke software Created bespoke software</h3>
+                </div></div>
+            </div>
+        </div>
+    </div> -->
+</body>
+</html>
+

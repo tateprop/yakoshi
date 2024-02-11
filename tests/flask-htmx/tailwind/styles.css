@@ -1,0 +1,325 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  background: black;
+  width: 100vw;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+#canvas-container {
+  position: relative;
+}
+
+.c {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+#text-over-canvas {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  color: white;
+}
+
+#center-div {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  box-shadow: 0px 0px 500px rgb(0, 0, 0);
+}
+
+.main-text {
+  font-size: 96px;
+  margin: 0 10px;
+  max-width: 800px;
+  font-weight: 200;
+  text-shadow: 2px 2px 10px green;
+}
+
+.hide {
+  display: none;
+}
+
+.glitch {
+  margin: 0 10px;
+  display: inline;
+  position: relative;
+  color: #fff;
+  font-size: 96px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  animation: glitch-skew 1s infinite linear alternate-reverse;
+}
+.glitch::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  left: 2px;
+  text-shadow: -2px 0 rgba(0, 223, 19, 0.3137254902);
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  left: -2px;
+  text-shadow: -2px 0 rgba(0, 223, 19, 0.3137254902), 2px 2px rgba(0, 223, 19, 0.3137254902);
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim2 5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+  0% {
+    clip: rect(34px, 9999px, 15px, 0);
+    transform: skew(0.24deg);
+  }
+  5% {
+    clip: rect(75px, 9999px, 58px, 0);
+    transform: skew(0.69deg);
+  }
+  10% {
+    clip: rect(2px, 9999px, 46px, 0);
+    transform: skew(0.68deg);
+  }
+  15% {
+    clip: rect(58px, 9999px, 66px, 0);
+    transform: skew(0.06deg);
+  }
+  20% {
+    clip: rect(99px, 9999px, 15px, 0);
+    transform: skew(0.66deg);
+  }
+  25% {
+    clip: rect(46px, 9999px, 84px, 0);
+    transform: skew(0.66deg);
+  }
+  30% {
+    clip: rect(72px, 9999px, 19px, 0);
+    transform: skew(0.67deg);
+  }
+  35% {
+    clip: rect(12px, 9999px, 9px, 0);
+    transform: skew(0.95deg);
+  }
+  40% {
+    clip: rect(54px, 9999px, 21px, 0);
+    transform: skew(0.69deg);
+  }
+  45% {
+    clip: rect(55px, 9999px, 97px, 0);
+    transform: skew(0.46deg);
+  }
+  50% {
+    clip: rect(79px, 9999px, 73px, 0);
+    transform: skew(0.39deg);
+  }
+  55% {
+    clip: rect(17px, 9999px, 32px, 0);
+    transform: skew(0.45deg);
+  }
+  60% {
+    clip: rect(16px, 9999px, 20px, 0);
+    transform: skew(0.84deg);
+  }
+  65% {
+    clip: rect(24px, 9999px, 56px, 0);
+    transform: skew(0.15deg);
+  }
+  70% {
+    clip: rect(19px, 9999px, 74px, 0);
+    transform: skew(0.07deg);
+  }
+  75% {
+    clip: rect(23px, 9999px, 53px, 0);
+    transform: skew(0.78deg);
+  }
+  80% {
+    clip: rect(78px, 9999px, 4px, 0);
+    transform: skew(0.55deg);
+  }
+  85% {
+    clip: rect(14px, 9999px, 32px, 0);
+    transform: skew(0.54deg);
+  }
+  90% {
+    clip: rect(8px, 9999px, 32px, 0);
+    transform: skew(0.32deg);
+  }
+  95% {
+    clip: rect(55px, 9999px, 10px, 0);
+    transform: skew(0.28deg);
+  }
+}
+@keyframes glitch-anim2 {
+  0% {
+    clip: rect(37px, 9999px, 57px, 0);
+    transform: skew(0.01deg);
+  }
+  5% {
+    clip: rect(53px, 9999px, 72px, 0);
+    transform: skew(0.04deg);
+  }
+  10% {
+    clip: rect(51px, 9999px, 38px, 0);
+    transform: skew(0.35deg);
+  }
+  15% {
+    clip: rect(96px, 9999px, 44px, 0);
+    transform: skew(0.5deg);
+  }
+  20% {
+    clip: rect(4px, 9999px, 88px, 0);
+    transform: skew(0.46deg);
+  }
+  25% {
+    clip: rect(61px, 9999px, 8px, 0);
+    transform: skew(0.65deg);
+  }
+  30% {
+    clip: rect(63px, 9999px, 24px, 0);
+    transform: skew(0.26deg);
+  }
+  35% {
+    clip: rect(33px, 9999px, 3px, 0);
+    transform: skew(0.32deg);
+  }
+  40% {
+    clip: rect(1px, 9999px, 19px, 0);
+    transform: skew(0.44deg);
+  }
+  45% {
+    clip: rect(35px, 9999px, 31px, 0);
+    transform: skew(0.27deg);
+  }
+  50% {
+    clip: rect(24px, 9999px, 84px, 0);
+    transform: skew(0.96deg);
+  }
+  55% {
+    clip: rect(95px, 9999px, 99px, 0);
+    transform: skew(0.02deg);
+  }
+  60% {
+    clip: rect(96px, 9999px, 48px, 0);
+    transform: skew(0.64deg);
+  }
+  65% {
+    clip: rect(85px, 9999px, 94px, 0);
+    transform: skew(0.44deg);
+  }
+  70% {
+    clip: rect(77px, 9999px, 13px, 0);
+    transform: skew(0.13deg);
+  }
+  75% {
+    clip: rect(30px, 9999px, 6px, 0);
+    transform: skew(0.99deg);
+  }
+  80% {
+    clip: rect(69px, 9999px, 96px, 0);
+    transform: skew(0.83deg);
+  }
+  85% {
+    clip: rect(61px, 9999px, 78px, 0);
+    transform: skew(0.3deg);
+  }
+  90% {
+    clip: rect(78px, 9999px, 11px, 0);
+    transform: skew(0.8deg);
+  }
+  95% {
+    clip: rect(49px, 9999px, 27px, 0);
+    transform: skew(0.56deg);
+  }
+}
+@keyframes glitch-skew {
+  0% {
+    transform: skew(-3deg);
+  }
+  10% {
+    transform: skew(-1deg);
+  }
+  20% {
+    transform: skew(-3deg);
+  }
+  30% {
+    transform: skew(2deg);
+  }
+  40% {
+    transform: skew(0deg);
+  }
+  50% {
+    transform: skew(2deg);
+  }
+  60% {
+    transform: skew(-4deg);
+  }
+  70% {
+    transform: skew(0deg);
+  }
+  80% {
+    transform: skew(0deg);
+  }
+  90% {
+    transform: skew(-3deg);
+  }
+}
+.nav-bar {
+  background: linear-gradient(180deg, rgba(0, 255, 0, 0.2) 0%, rgba(0, 255, 0, 0.1) 40%, rgba(255, 255, 255, 0) 100%);
+  position: absolute;
+  padding: 10px 25px;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  max-height: 6vh;
+  z-index: 2;
+}
+
+.logo {
+  height: 6vh;
+}
+
+.logo > img {
+  height: 6vh;
+}
+
+.menu-link {
+  height: 6vh;
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.menu-link:visited {
+  color: white;
+}
+
+.menu-link:hover {
+  cursor: pointer;
+  color: yellow;
+}
+
+.fill {
+  height: 100vh;
+}/*# sourceMappingURL=styles.css.map */
