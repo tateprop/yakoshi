@@ -15,7 +15,7 @@
 <body>
     <div id="canvas-container"> 
         
-        <canvas class='c' data-number='0' hx-get='/matrix_level' hx-trigger='every 5s' hx-swap='outerHTML'></canvas>
+        <canvas class='c'><p class="matrix_level" hx-get='/matrix_level' hx-trigger='every 1s'>1</p></canvas>
         <!-- <canvas class='c' data-number='0'></canvas> -->
         <nav class='nav-bar'>
             <div class="logo">
@@ -23,7 +23,7 @@
             </div>
             <div class="menu">
                 <p class="eggCounter" hx-get="/egg_counter" hx-trigger="every 5s"></p>
-                <a href="" class="menu-link">
+                <a href="{{ url_for('download', filename='Yakov Tajtelbaum CV.pdf') }}" target="_blank" class="menu-link">
                    Download CV
                 </a>
             </div>
@@ -272,19 +272,19 @@
               <div class="box-container">
                   <div class="box-border"><div class="box">
                       <img  class="bigger" src="{{url_for('static', filename='images/asserson_logo.webp')}}" alt="">
-                      <h3>Created bespoke software Created bespoke software Created bespoke software Created bespoke software</h3>
+                      <h3>Developed bespoke software to collate data for a high profile lawsuit against the BBC. This including web scraping, video processing and video transcribing.</h3>
                   </div></div>
               </div>
               <div class="box-container">
                 <div class="box-border"><div class="box">
                     <img class="smaller" src="{{url_for('static', filename='images/1682460341776-removebg-preview.png')}}" alt="">
-                    <h3>Created bespoke software Created bespoke software Created bespoke software Created bespoke software</h3>
+                    <h3>Created configurable real-time ANPR software now used in over 15 car parks. Used docker to easily port the software to Raspberry Pi conected to PTZ streams.</h3>
                 </div></div>
             </div>
             <div class="box-container">
               <div class="box-border"><div class="box">
                   <img  class="bigger" src="{{url_for('static', filename='images/heywood.svg')}}" alt="">
-                  <h3>Created bespoke software Created bespoke software Created bespoke software Created bespoke software</h3>
+                  <h3>Built a suite of automations used by multiple departments to increase efficiency. Notably contributions; automating the approval process for payment runs and interacting with our PM API to generate custom reports.</h3>
               </div></div>
           </div>
         </div>
@@ -293,7 +293,7 @@
     <div class="footer">
       <div class="footer-container">
         <a class="menu-link menu-footer" href="mailto:yakov@yakoshi.net">Email: yakov@yakoshi.net</a>
-        <a class="menu-link menu-footer" href="#">Download CV</a>
+        <a class="menu-link menu-footer" href="{{ url_for('download', filename='Yakov Tajtelbaum CV.pdf') }}" target="_blank">Download CV</a>
       </div>
     </div>
 </body>

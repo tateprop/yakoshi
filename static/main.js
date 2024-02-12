@@ -32,13 +32,15 @@ function writeText(){
     
 }
 //add change color??
-INDEX = [["#09ed1c", 50, 0.1],["#09ed1c", 35, 0.04],["aqua", 30, 0.04], ["white", 20, 0.02], ["yellow", 10, 0.02], ["red", 5, 0.01]]
-function draw(index)
+INDEX = [["#09ed1c", 50, 0.3,1],["#09ed1c", 35, 0.1,1],["aqua", 30, 0.08,1], ["white", 20, 0.04,1.2], ["orange", 10, 0.04,1.3], ["red", 5, 0.04, 1.6]]
+function draw(index, c, previos)
 {
-    var c = Array.from(document.getElementsByClassName("c"))[0]
-    // c.width = c.getBoundingClientRect().width;
-    // c.height = c.getBoundingClientRect().height;
-    var level = c.dataset.number
+    var level = c.firstChild.textContent
+    if (level != previos) {
+      var c = Array.from(document.getElementsByClassName("c"))[0]
+      c.width = c.getBoundingClientRect().width;
+      c.height = c.getBoundingClientRect().height;
+    }
     var data = INDEX[level]
     var drops = dropArray[index]
     var ctx = c.getContext("2d");
@@ -46,19 +48,20 @@ function draw(index)
     ctx.fillRect(0, 0, c.width, c.height);
 
     ctx.fillStyle = data[0];
-    ctx.font = font_size + "px arial";
+    var multiplier = data[3]
+    ctx.font = font_size*multiplier + "px arial";
     for(var i = 0; i < drops.length; i++)
     {
 
         var text = matrix[Math.floor(Math.random()*matrix.length)];
-        ctx.fillText(text, i*font_size, drops[i]*font_size);
+        ctx.fillText(text, i*font_size*multiplier, drops[i]*font_size*multiplier);
 
-        if(drops[i]*font_size > c.height && Math.random() > 0.975)
+        if(drops[i]*font_size*multiplier > c.height && Math.random() > 0.975)
             drops[i] = 0;
 
         drops[i]++;
     }
-    setTimeout(function() { draw(index); }, data[1]);
+    setTimeout(function() { draw(index, c, level); }, data[1]);
 }
 dropArray = [];
 document.addEventListener('DOMContentLoaded', function() {
@@ -82,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
         elements = document.querySelectorAll('.number');
 
         dropArray.push(drops)
-        draw(index)
+        draw(index, c, 90)
 
     })
     
@@ -217,19 +220,3 @@ $(document).ready(function () {
       
   });
 
-
-
-//   // Get multiple elements instead of a single one using "querySelectorAll"
-//   const squares = document.getElementsByClassName('number');
-//   console.log(squares)
-//   // Loop over the elements and add each one to the observer
-//   Array.from(squares).forEach((element) => observer.observe(element));
-
-// TODO
-// 1 - Finish content - ALMOST
-// 2 - Add animation on scroll - Done 
-// 3 - Js function to count up to number also on scroll - DONE
-// 4 - Add cv link
-// 5 - Buy domain - DONE
-// 6 - Add email link
-// 7 - add footer

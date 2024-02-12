@@ -1,8 +1,9 @@
 from functools import partial
-from flask import Flask, render_template, request, redirect, make_response, render_template_string
+from flask import Flask, render_template, request, redirect, make_response, send_from_directory
 from flask_htmx import HTMX
 from flask_htmx.responses import HTMXResponseClientRedirect
 import json
+import os
 
 app = Flask(__name__)
 htmx = HTMX(app)
@@ -15,10 +16,10 @@ def readData(heading):
     except json.JSONDecodeError:
         return "0"
 
-def addVisit():
+def addSiteData(keyword):
     with open("./static/data.json", "r") as f:
         data = json.load(f)
-    data["visits"] += 1
+    data[keyword] += 1
     with open("./static/data.json", "w") as f:
         f.write(json.dumps(data))
 
@@ -76,8 +77,10 @@ def addEgg(ip, eggNumber):
         change = True
         data["eggs"] = eggNumberString
 
-    if change and eggNumber == 1:
-        data["fright"] == True
+    if change:
+        addSiteData("emails")
+        if eggNumber == 1:
+            data["fright"] == True
 
     originalData.append(data)
     with open("./static/userData.txt", "w") as f:
@@ -105,7 +108,7 @@ def getName(userData):
 
 @app.route("/")
 def home():
-    addVisit()
+    addSiteData("visits")
     code = request.args.get('q')
     userData = updateUser(request.remote_addr, code)
     if code is None and "code" in userData:
@@ -167,19 +170,29 @@ def eggCounter():
 def matrixLevel():
     ip = request.remote_addr
     _, data = getUser("ip",ip)
-    html = "<canvas class='c' data-number='{}' hx-get='/matrix_level' hx-trigger='every 5s' hx-swap='outerHTML'></canvas>"
     if "eggs" in data:
         eggs = data["eggs"]
-        return render_template_string(html.format(str(len(eggs))))
-    return render_template_string(html.format("0"))
+        return str(len(eggs))
+    return "0"
 
 @app.route("/add_data_uwodfhewiuf83ry2jueij299384010fiifjkjek", methods = ['GET', 'POST'])
 def add_data():
     if request.method == 'POST':
+        addSiteData("emails")
         data = request.form
         addUser(data)
         
     return "success"
+
+@app.route('/uploads/<path:filename>', methods=['GET', 'POST'])
+def download(filename):
+    print("a")
+    print()
+    
+    uploads = "./uploads"
+    print(send_from_directory(uploads, filename))
+    return send_from_directory(uploads, filename)
+
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5938)
 
