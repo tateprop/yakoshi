@@ -15,12 +15,14 @@
 <body>
     <div id="canvas-container"> 
         
-        <canvas class="c" data-number="{{ matrix_level }}"></canvas>
-        <nav class="nav-bar">
+        <canvas class='c' data-number='0' hx-get='/matrix_level' hx-trigger='every 5s' hx-swap='outerHTML'></canvas>
+        <!-- <canvas class='c' data-number='0'></canvas> -->
+        <nav class='nav-bar'>
             <div class="logo">
                 <img src="{{url_for('static', filename='./images/yak2.svg')}}" alt="">
             </div>
             <div class="menu">
+                <p class="eggCounter" hx-get="/egg_counter" hx-trigger="every 5s"></p>
                 <a href="" class="menu-link">
                    Download CV
                 </a>
@@ -258,30 +260,42 @@
       </div>
       <div class="first-page shorter">
         <div class="center-div1 shorter">
-          <h1 class="header">...why?</h1>
+          <h1 class="ag-timeline_tagline">...why?</h1>
           <div class="ag-timeline_title spacing"> I want to connect with like minded individuals in the tech industry. Whether it’s to help on a project or just for a chat... <br> <br><a class="strong" href="mailto:yakov@yakoshi.net">I want to hear from you</a></div>
 
         </div>
       </div>
-    <!-- <div class="first-page">
+    <div class="first-page">
         <div class="center-div1">
-            <h1 class="header">Previous projects</h1>
-            <div class="box-container">
-                <div class="box-border"><div class="box" id="first">
-                    <img  class="bigger" src="./images/asserson_logo.webp" alt="">
-                    <h3>Created bespoke software Created bespoke software Created bespoke software Created bespoke software</h3>
-                </div></div>
-                <div class="box-border"><div class="box" id="first">
-                    <img class="smaller" src="./images/1682460341776-removebg-preview.png" alt="">
-                    <h3>Created bespoke software Created bespoke software Created bespoke software Created bespoke software</h3>
-                </div></div>
-                <div class="box-border"><div class="box" id="first">
-                    <img class="bigger" src="./images/heywood.svg" alt="">
+            <h1 class="ag-timeline_tagline">Previous projects</h1>
+            <div class="stats-container projects">
+              <div class="box-container">
+                  <div class="box-border"><div class="box">
+                      <img  class="bigger" src="{{url_for('static', filename='images/asserson_logo.webp')}}" alt="">
+                      <h3>Created bespoke software Created bespoke software Created bespoke software Created bespoke software</h3>
+                  </div></div>
+              </div>
+              <div class="box-container">
+                <div class="box-border"><div class="box">
+                    <img class="smaller" src="{{url_for('static', filename='images/1682460341776-removebg-preview.png')}}" alt="">
                     <h3>Created bespoke software Created bespoke software Created bespoke software Created bespoke software</h3>
                 </div></div>
             </div>
+            <div class="box-container">
+              <div class="box-border"><div class="box">
+                  <img  class="bigger" src="{{url_for('static', filename='images/heywood.svg')}}" alt="">
+                  <h3>Created bespoke software Created bespoke software Created bespoke software Created bespoke software</h3>
+              </div></div>
+          </div>
         </div>
-    </div> -->
+        </div>
+    </div>
+    <div class="footer">
+      <div class="footer-container">
+        <a class="menu-link menu-footer" href="mailto:yakov@yakoshi.net">Email: yakov@yakoshi.net</a>
+        <a class="menu-link menu-footer" href="#">Download CV</a>
+      </div>
+    </div>
 </body>
 </html>
 

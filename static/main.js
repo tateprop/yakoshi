@@ -32,9 +32,12 @@ function writeText(){
     
 }
 //add change color??
-INDEX = [["#09ed1c", 35, 0.04],["RED", 30, 0.04], ["RED", 20, 0.02], ["RED", 10, 0.02], ["RED", 5, 0.01]]
-function draw(c, index)
+INDEX = [["#09ed1c", 50, 0.1],["#09ed1c", 35, 0.04],["aqua", 30, 0.04], ["white", 20, 0.02], ["yellow", 10, 0.02], ["red", 5, 0.01]]
+function draw(index)
 {
+    var c = Array.from(document.getElementsByClassName("c"))[0]
+    // c.width = c.getBoundingClientRect().width;
+    // c.height = c.getBoundingClientRect().height;
     var level = c.dataset.number
     var data = INDEX[level]
     var drops = dropArray[index]
@@ -55,7 +58,7 @@ function draw(c, index)
 
         drops[i]++;
     }
-    setTimeout(function() { draw(c, index); }, data[1]);
+    setTimeout(function() { draw(index); }, data[1]);
 }
 dropArray = [];
 document.addEventListener('DOMContentLoaded', function() {
@@ -79,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
         elements = document.querySelectorAll('.number');
 
         dropArray.push(drops)
-        draw(c, index)
+        draw(index)
 
     })
     
@@ -134,7 +137,9 @@ document.addEventListener('DOMContentLoaded', function() {
 }, false);
 
 
-
+function addEgg(){
+  fetch("./add_egg_923785rufhrejg93");
+}
 
 
 $(document).ready(function () {

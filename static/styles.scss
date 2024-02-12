@@ -223,6 +223,7 @@ body {
   background: black;
   padding: 10px;
   width: 200px;
+  height: 100%;
   color: white;
   text-align: start;
 }
@@ -565,5 +566,104 @@ img {
 }
 .shorter{
   margin: 10vh 0;
-  height: 50vh;
+  height: auto;
+}
+.projects{
+  width: 80vw;
+  max-width: 80vw;
+  justify-content: center;
+  margin: 50px 20px;
+}
+.box>img.bigger{
+  width: 100%;
+  height: auto;
+  padding: 20px;
+}
+.box>img.smaller{
+  width: 60%;
+  align-self: center;
+}
+.footer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ff6600;
+}
+.footer-container{
+  display: flex;
+  flex-flow: wrap row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 15px 50px;
+  width: 100vw;
+}
+.menu-footer{
+  height: auto;
+}
+
+.menu{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.menu-link{
+  height: auto;
+}
+.eggCounter{
+  font-size: 20px;
+  font-weight: 600;
+  color: red;
+}
+@media screen and (max-width:700px) {
+  .main-text, .glitch {
+    font-size: 72px;
+  }
+ 
+  .codingImage-container{
+    display: none;
+  }
+  .header{
+    font-size: 50px;
+  }
+  .stats-container{
+    max-width: 100vw;
+    justify-content: center;
+  }
+  .ag-timeline_title-box{
+    padding: 0 20px;
+  }
+  .ag-timeline_tagline{
+    font-size: 50px;
+  }
+  .ag-timeline_title{
+    font-size: 30px;
+  }
+  .ag-timeline_item:nth-child(2n+1) .ag-timeline-card_arrow{
+    box-shadow: none;
+  }
+  .strong{
+    font-size: 50px;
+  }
+  .shorter{
+    margin-bottom:20vh ;
+
+  }
+  .center-div1{
+    padding: 0 20px;
+  }
+  .menu-footer{
+    font-size: 15px;
+  }
+  .nav-bar{
+    padding: 10px 15px;
+  }
+  .logo{
+    width: 25%;
+  }
+  .menu > a{
+    font-size: 15px;
+  }
+  .eggCounter{
+    font-size: 16px;
+  }
 }
