@@ -46,7 +46,7 @@ def updateUser(ip, code):
         data = {"ip":ip, "visits":1}
     
     _, codeData = getUser("code",code)
-    if codeData:
+    if codeData and "code" not in data:
         originalData.remove(codeData)
         data = {**data, **codeData}
 
@@ -61,7 +61,7 @@ def addUser(data):
         return
     else:
         with open("./static/userData.txt", "a+") as f:
-            f.write(json.dumps(data) + "\n")
+            f.write("\n" + json.dumps(data))
 
 def addEgg(ip, eggNumber):
     originalData, data = getUser("ip",ip)
@@ -78,9 +78,9 @@ def addEgg(ip, eggNumber):
         data["eggs"] = eggNumberString
 
     if change:
-        addSiteData("emails")
+        addSiteData("eggs")
         if eggNumber == 1:
-            data["fright"] == True
+            data["fright"] = True
 
     originalData.append(data)
     with open("./static/userData.txt", "w") as f:
@@ -103,7 +103,7 @@ def removeFright(userData):
 def getName(userData):
     if "fright" in userData:
         removeFright(userData)
-        return userData["name"] + "I'll always remember you..." if "name" in userData else "there..."
+        return userData["name"] + " I'll always remember you..." if "name" in userData else "there..."
     return userData["name"] if "name" in userData else "there..."
 
 @app.route("/")
@@ -160,16 +160,20 @@ def eggs():
 def eggCounter():
     ip = request.remote_addr
     _, data = getUser("ip",ip)
+    if data is None:
+        return ""
     if "eggs" in data:
         eggs = data["eggs"]
         total = "5" if "code" in data else "4"
-        return f"Eggs found: {str(len(eggs))}/{total}"
+        return f"Secrets found: {str(len(eggs))}/{total}"
     return ""
 
 @app.route("/matrix_level")
 def matrixLevel():
     ip = request.remote_addr
     _, data = getUser("ip",ip)
+    if data is None:
+        return "0"
     if "eggs" in data:
         eggs = data["eggs"]
         return str(len(eggs))
@@ -193,8 +197,12 @@ def download(filename):
     print(send_from_directory(uploads, filename))
     return send_from_directory(uploads, filename)
 
+@app.errorhandler(404)
+def page_not_found(_):
+    return "Oh no looks like you're lost...."
+
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=5938)
+    app.run(debug=True)
 
 
 # Logic to add

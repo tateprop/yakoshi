@@ -32,7 +32,7 @@ function writeText(){
     
 }
 //add change color??
-INDEX = [["#09ed1c", 50, 0.3,1],["#09ed1c", 35, 0.1,1],["aqua", 30, 0.08,1], ["white", 20, 0.04,1.2], ["orange", 10, 0.04,1.3], ["red", 5, 0.04, 1.6]]
+INDEX = [["#09ed1c", 50, 0.1,1],["#09ed1c", 35, 0.1,1],["aqua", 30, 0.08,1], ["white", 20, 0.04,1.2], ["orange", 10, 0.04,1.3], ["red", 5, 0.04, 1.6]]
 function draw(index, c, previos)
 {
     var level = c.firstChild.textContent
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
         elements = document.querySelectorAll('.number');
 
         dropArray.push(drops)
-        draw(index, c, 90)
+        draw(index, c, 0)
 
     })
     

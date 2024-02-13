@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="initial-scale=1.0, width=device-width">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     <title>Document</title>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <script src="{{url_for('static', filename='main.js')}}"></script>
     <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,14 +16,13 @@
 <body>
     <div id="canvas-container"> 
         
-        <canvas class='c'><p class="matrix_level" hx-get='/matrix_level' hx-trigger='every 1s'>1</p></canvas>
-        <!-- <canvas class='c' data-number='0'></canvas> -->
+        <canvas class='c'><p class="matrix_level" hx-get='/matrix_level' hx-trigger='every 2s'>0</p></canvas>
         <nav class='nav-bar'>
             <div class="logo">
                 <img src="{{url_for('static', filename='./images/yak2.svg')}}" alt="">
             </div>
             <div class="menu">
-                <p class="eggCounter" hx-get="/egg_counter" hx-trigger="every 5s"></p>
+                <p class="eggCounter" hx-get="/egg_counter" hx-trigger="every 2s"></p>
                 <a href="{{ url_for('download', filename='Yakov Tajtelbaum CV.pdf') }}" target="_blank" class="menu-link">
                    Download CV
                 </a>
